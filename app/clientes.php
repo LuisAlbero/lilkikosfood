@@ -13,3 +13,4 @@ class clientes extends Model
                        'telefono','email','rfc','calle','numero','colonia','c_p','estado'];
     protected $date=['deleted_at'];
 }
+

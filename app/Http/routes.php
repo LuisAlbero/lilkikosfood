@@ -14,46 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/saludo', function () {
-    echo "hola mundo tic 73";
-});
-
-Route::get('/areatriangulo', function () {
-    $base = 34;
-    $altura = 40;
-    $area = $base * $altura /2;
-    echo "El area del triangulo es " . $area;
-});
-Route::get('/pago/{cant}/{costo}',
- function ($cant,$costo) {
-     $pago = $cant * $costo;
-    echo "El pago es de $pago";
-});
-
-
-Route::get('/altacliente','curso@altacliente');
-Route::POST('/guardarcliente','curso@guardarcliente')->name('guardarcliente');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Route::get('/altaempleado','controlador_empleados@altaempleado')->name('altaempleado');;
+Route::POST('/guardaempleado','controlador_empleados@guardaempleado')->name('guardaempleado');
+Route::get('/reporteempleado','controlador_empleados@reporteempleado');
+Route::get('/modificaempleado/{id_empleado}','controlador_empleados@modificaempleado')->name('modificaempleado');
+Route::POST('/guardaedicionempleado','controlador_empleados@guardaedicionempleado')->name('guardaedicionempleado');
 

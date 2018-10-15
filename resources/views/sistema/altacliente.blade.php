@@ -1,22 +1,7 @@
-<form>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  </div>
-  <div class="form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+
 
 @section('contenido')
-<h1> Alta de CLIENTE </h1>
+<h1> Alta de CLIENTEs </h1>
 <br>
 <form action = '{{route('guardarcliente')}}' method = 'POST' enctype='multipart/form-data'>
 {{csrf_field()}}
@@ -91,9 +76,24 @@ colonia<input type  ='text' name = 'colonia' value="{{old('colonia')}}">
 <br>
 
 
+@if($errors->first('c_p')) 
+<i> {{ $errors->first('c_p') }} </i> 
+@endif  <br>
+estado<input type  ='text' name = 'c_p' value="{{old('c_p')}}">
+<br> 
+
+@if($errors->first('estado')) 
+<i> {{ $errors->first('estado') }} </i> 
+@endif  <br>
+c_p<input type  ='text' name = 'estado' value="{{old('estado')}}">
+<br>
+
+
+
+
 
 <br>
-<input type = 'submit' value = 'Guardar'>
+<input type = 'submit' value = 'Guardakr'>
 <br>
 </form>
 
