@@ -16,7 +16,7 @@
 </form>
 
 @section('contenido')
-<h1> Alta de maestrmos </h1>
+<h1> Alta de CLIENTE </h1>
 <br>
 <form action = '{{route('guardarcliente')}}' method = 'POST' enctype='multipart/form-data'>
 {{csrf_field()}}
@@ -26,7 +26,7 @@
 @endif	<br>
         
 
-Clave CLIENTE <input type = 'text' name = 'id_cliente' value="{{$id_cl}}" readonly ='readonly'>
+Clave  clien <input type = 'text' name = 'id_cliente' value="{{$id_cl}}" readonly ='readonly'>
 <br>
 @if($errors->first('nombre')) 
 <i> {{ $errors->first('nombre') }} </i> 
