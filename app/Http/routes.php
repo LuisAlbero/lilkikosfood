@@ -25,3 +25,12 @@ Route::POST('/guardatipodeproducto','controlador_tipodeproductos@guardatipodepro
 Route::get('/reportetipodeproductos','controlador_tipodeproductos@reportetipodeproductos');
 Route::get('/modificatipodeproducto/{id_tipodeproducto}','controlador_tipodeproductos@modificatipodeproducto')->name('modificatipodeproducto');
 Route::POST('/guardaediciontipodeproducto','controlador_tipodeproductos@guardaediciontipodeproducto')->name('guardaediciontipodeproducto');
+
+
+
+Route::get('/altacliente','controlador_clientes@altacliente')->name('altacliente');;
+Route::POST('/guardacliente','controlador_clientes@guardacliente')->name('guardacliente');
+Route::get('/reporteclientes','controlador_clientes@reportecliente');
+Route::get('/modificacliente/{id_cliente}','controlador_clientes@modificacliente')->name('modificacliente');
+Route::POST('/guardaedicioncliente','controlador_clientes@guardaedicioncliente')->name('guardaedicioncliente');
+Route::POST('/guardaedicioncliente','controlador_clientes@guardaedicioncliente')->name('guardaedicioncliente');
