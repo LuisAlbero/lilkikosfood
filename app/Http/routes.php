@@ -52,3 +52,13 @@ Route::get('/reportezona','zona@reportezona');
 Route::get('/eliminam/{id_zona}','curso@eliminam')->name('eliminam');
 Route::get('/modificazona/{id_zona}','curso@modificam')->name('modificam');
 Route::POST('/guardaedicionzona','curso@guardaedicionm')->name('guardaedicionm');
+
+
+
+route::get('/altausuarios','c_usuarios@altausuarios');
+route::POST('/guardausuarios','c_usuarios@guardausuarios')->name('guardausuarios');
+route::get('/reporteusuarios','c_usuarios@reporteusuarios');
+route::get('/eliminausuarios/{id_usuario}','c_usuarios@eliminausuarios')->name('eliminausuarios');
+route::get('/modificausuarios/{id_usuario}','c_usuarios@modificausuarios')->name('modificausuarios');
+Route::POST('/guardaedicionusuario','c_usuarios@guardaedicionusuario')->name('guardaedicionusuario');
+
