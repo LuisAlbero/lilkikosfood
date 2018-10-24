@@ -44,3 +44,11 @@ Route::get('/reportemesa','curso@reportemesa');
 Route::get('/eliminam/{idm}','curso@eliminam')->name('eliminam');
 Route::get('/modificam/{idm}','curso@modificam')->name('modificam');
 Route::POST('/guardaedicionm','curso@guardaedicionm')->name('guardaedicionm');
+
+
+Route::get('/altazona','zona@altazona');
+Route::POST('/guardazona','zona@guardazona')->name('guardazona');
+Route::get('/reportezona','zona@reportezona');
+Route::get('/eliminam/{id_zona}','curso@eliminam')->name('eliminam');
+Route::get('/modificazona/{id_zona}','curso@modificam')->name('modificam');
+Route::POST('/guardaedicionzona','curso@guardaedicionm')->name('guardaedicionm');
