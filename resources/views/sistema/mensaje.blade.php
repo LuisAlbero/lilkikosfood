@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Mensaje de Accion</title>
-</head>
+<html>
 <body>
-	<h1 align="center">{{$proceso}}</h1>
-	<br>
-	<h4 align="center"><b>{{$mensaje}}</b></h4>
-	<!-- <button><a href="{{route('altaTipoAbogado')}}">Regresar</a></button> -->
+<h1>{{$proceso}}</h1>
+<br>
+<b>{{$mensaje}}</b>
 </body>
 </html>

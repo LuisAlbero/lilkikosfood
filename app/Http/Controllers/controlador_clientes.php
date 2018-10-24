@@ -50,13 +50,6 @@ class controlador_clientes extends Controller
 
 
 
-
-
-
-
-
-
-
 	     ]);
 
 

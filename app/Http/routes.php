@@ -34,3 +34,13 @@ Route::get('/reporteclientes','controlador_clientes@reportecliente');
 Route::get('/modificacliente/{id_cliente}','controlador_clientes@modificacliente')->name('modificacliente');
 Route::POST('/guardaedicioncliente','controlador_clientes@guardaedicioncliente')->name('guardaedicioncliente');
 Route::POST('/guardaedicioncliente','controlador_clientes@guardaedicioncliente')->name('guardaedicioncliente');
+
+
+
+
+Route::get('/altamesa','curso@altamesa');
+Route::POST('/guardamesa','curso@guardamesa')->name('guardamesa');
+Route::get('/reportemesa','curso@reportemesa');
+Route::get('/eliminam/{idm}','curso@eliminam')->name('eliminam');
+Route::get('/modificam/{idm}','curso@modificam')->name('modificam');
+Route::POST('/guardaedicionm','curso@guardaedicionm')->name('guardaedicionm');

@@ -5,165 +5,113 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\clientes;
+use App\zonas;
+use App\mesas;
 
 class curso extends Controller
 {
-   
-    public function altacliente()
+ 
+    public function altamesa()
     {
-		// ORM ELOQUENT
-		//select * from carreras
-		//$carreras=carreras::all();
-		//select * from carreras where activo = 'si' order by nombre asc
-		
-		  $clavequesigue = clientes::withTrashed()->orderBy('id_cliente','desc')
-								->take(1)
-								->get();
-           $id_cl = $clavequesigue[0]->id_cliente+1;
-	 					
-							
-		//return $carreras;
-	   return view ("sistema.altacliente")
-	  
-	   ->with('id_cl',$id_cl);
-	}	
-    public function guardarcliente(Request $request)
-    {
-    	$id_cliente = $request->id_cliente;
-		$nombre = $request->nombre;
-		$apellido1= $request->apellido1;
-		$apellido2 = $request->apellido2;
-		$telefono= $request->telefono;
-		$email = $request->email;
-		$rfc = $request->rfc;
-		$calle = $request->calle;
-		$numero = $request->numero;
-		$colonia = $request->colonia;
-		$c_p = $request->c_p;
-		$estado = $request->estado;
+        $clavequesigue = mesas::orderBy('id_mesa','desc')
+        ->take(1)
+        ->get();
+        $idms = $clavequesigue[0]->id_mesa+1;
 
-		///NUNCA SE RECIBEN LOS ARCH
-
-    
-		 
-		 
-		 //insert into maestros(idm,nombre,edad,sexo) values('$idm',
-		 //'$nombre')
-		    $clien = new clientes;
-			$clien->id_cliente = $request->id_cliente;
-			$clien->nombre = $request->nombre;
-			$clien->apellido1 = $request->apellido1;
-			$clien->apellido2 =$request->apellido2;
-			$clien->telefono= $request->telefono;
-			$clien->email=$request->email;
-			$clien->rfc=$request->rfc;
-			$clien->calle=$request->calle;
-			$clien->numero =$request->numero;
-			$clien->colonia=$request->colonia;
-			$clien->c_p=$request->c_p;
-			$clien->estado=$request->estado;
-
-			$clien->save();
-		$proceso = "ALTA DE MAESTRO";	
-	    $mensaje="Registro guardado correctamente";
-		return view('sistema.mensaje')
-		->with('proceso',$proceso)
-		->with('mensaje',$mensaje);
-	}		
-	
- public function reporteclientes(){
-        return view ('sistema.reportemclientes')->with('maestros', $maestros);
-    }
-
-    public function altamun(){
-        return view ('sistema.altamunicipio');
-    }
-    
-    public function eliminam($idm){
-        maestros::find($idm)->delete();
-        $proceso = "Eliminar Maestros";
-        $mensaje = "El maestro ha sido borrado correctamente";
-        return view('sistema.mensaje')->with('proceso',$proceso)->with('mensaje',$mensaje);
-    }
-    
-    public function modificam($idm){
-        $maestro = maestros::where('idm','=',$idm)->get();
-        $idc = $maestro[0]->idc;
-        $carrera = carreras::where('idc','=',$idc)->get();
-        $demascarreras = carreras::where('idc','!=',$idc)->get();
-        return view('sistema.guardamaestro')
-                                            ->with('maestro',$maestro[0])
-                                            ->with('idc',$idc)
-                                            ->with('carrera', $carrera[0]->nombre)
-                                            ->with('demascarreras',$demascarreras);
-    }
-
-    public function editamaestro(Request $request){
-        $nombre = $request->nombre;
-        $idm    = $request->idm;
-        $edad   = $request->edad;
-        $sexo   = $request->sexo;
-        $beca   = $request->beca;
-        $cp     = $request->cp;
-        //NUNCA SE RECIBEN LOS ARCHIVOS ADJUNTOS
-
+        $zonas = zonas::where('activo','Si')
+        ->orderBy('zona','desc')
+        ->get();
+        //orm eloquent  estudair sus consultas
+        //return $carreras;
+        return view ('sistema.altamesa')->with('zonas',$zonas)->with('idms',$idms);
         
+    }
+    public function guardamesa(Request $request)
+    {
+        $nombre = $request->nombre;
+        $edad = $request->edad;
+        $correo = $request->correo;
+        $idm = $request->idm;
+        $cp = $request->cp;
+        //no se recibe el archivo
+
+       
+        $maest = new mesas;
+        $maest ->id_mesa = $request ->id_mesa;
+  
+        $maest ->id_zona = $request ->id_zona;
+        $maest->save();
+        $proceso = "ALTA DE MAESTRO";
+        $mensaje = "Maestro guardado correctamente";
+        return view ("sistema.mensaje")
+        ->with('proceso',$proceso)
+        ->with('mensaje',$mensaje);
+        
+        
+    }
+     public function reportemesa()
+    {
+        $mesas = mesas::orderBy('id_zona','desc')->get();
+        return view('sistema.reportemesa')
+        ->with('mesas', $mesas);
+    }
+
+    public function eliminamesa($id_mesa)
+    {
+        mesas::find($id_mesa)->delete();
+        $proceso = "ELIMNAR MAESTROS";
+        $mensaje = "El maestro a sido borrado correctamente";
+        return view ('sistema.mensaje')
+        ->with('proceso', $proceso)
+        ->with('mensaje', $mensaje);
+    }
+    public function modificam($id_mesa)
+    {
+    $mesas= mesas::where('id_mesa','=',$id_mesa)->get();
+    $id_zona =$mesas[0]->id_zona;
+
+    $zonas = zonas::where('id_zona','=',$id_zona)->get();
+
+    $todasdemas = zonas::where('id_zona','!=',$id_zona)->get();
+
+    return view ('sistema.modificamesa')
+    ->with('mesas', $mesas[0])
+    ->with('id_zona',$id_zona)
+    ->with('zonas',$zonas[0]->zona)
+    ->with('todasdemas', $todasdemas);
+
+   }
+   public function guardaedicionm(Request $request)
+   {
+      $id_zona = $request->id_zona;
+        $edad = $request->edad;
+        $correo = $request->correo;
+        $idm = $request->idm;
+        $cp = $request->cp;
+        //no se recibe el archivo
+
         $this->validate($request,[
-            'nombre'    => 'required',['regex:/^[A-Z][A-Z,a-z, ñ, á,é,í,ó,ú]+$/'],
-            'edad'      => 'required|integer|min:18|max:60',
-            'cp'        => 'required',['regex:/^[0-9]{5}$/'],
-            'beca'      => 'required',['regex:/^[0-9]+[.][0-9]{2}$/'], //Expresion irregular
-            'archivo'   => 'image|mimes:jpg,jpeg,png,gif'
+            'id_mesa'=>'required|numeric',
+            'id_zona'=>'required|numeric',
+            
         ]);
 
-        $file = $request->file('archivo');
-            if($file!="")
-            {
-            $ldate = date('Ymd_His_');
-            $img = $file->getClientOriginalName();
-            $img2 = $ldate.$img;
-            \Storage::disk('local')->put($img2, \File::get($file));
-            }
+       
+        $maest -> idm = $request ->idm;
+        $maest -> nombre = $request ->nombre;
+        $maest -> edad = $request ->edad;
+        $maest -> correo = $request ->correo;
+        $maest -> cp = $request ->cp;
+        $maest -> idc = $request ->idc;
+        $maest->save();
+        $proceso = "MODIFICAGION DE MAESTRO";
+        $mensaje = "Maestro actualizado correctamente";
+        return view ("sistema.mensaje")
+        ->with('proceso',$proceso)
+        ->with('mensaje',$mensaje);
         
-            $maest = maestros::find($idm);
-            $maest->idm     =   $request->idm;
-            $maest->nombre  =   $request->nombre;
-            $maest->edad    =   $request->edad;
-            $maest->sexo    =   $request->sexo;
-            $maest->cp      =   $request->cp;
-            $maest->beca    =   $request->beca;
-            $maest->idc     =   $request->idc;
-            if($file!='')
-            {
-            $maest->archivo =   $img2;
-            }
-            $maest->save();
-            
-            $proceso = "Modificar Maestro";
-            $mensaje = "Registro Modificado Correctamente";
-            return view('sistema.mensaje')->with('proceso',$proceso)->with('mensaje',$mensaje);
-    }
+       
+   }
+    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

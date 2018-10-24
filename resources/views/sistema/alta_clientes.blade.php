@@ -5,6 +5,29 @@
 	<title>Registra Clientes</title>
 </head>
 <body>
+	<table border="2" >
+		<tr><td><a href="altacliente">ALTA ALTACLIENTE</a></td></tr>
+		<tr><td><a href="altaempleado">ALTA EMPLEADO</a></td></tr>
+		<tr><td><a href="altamesa">ALTA MESA</a></td></tr>
+		<tr><td><a href="altazona">ALTA ZONA</a></td></tr>
+		<tr><td><a href="altaproducto">ALTA PRODUCTO</a></td></tr>
+		<tr><td><a href="altatipodeproductos">ALTA TIPO DE PRODUCTO</a></td></tr>
+		<tr><td><a href="altausuario">ALTA USUARIO</a></td></tr>
+	</table>
+<table border="2">
+		<tr><td><a href="reporteclientes">REPORTE ALTACLIENTE</a></td></tr>
+		<tr><td><a href="reporteempleado">REPORTE EMPLEADO</a></td></tr>
+		<tr><td><a href="reportemesa">REPORTE MESA</a></td></tr>
+		<tr><td><a href="reportezona">REPORTE ZONA</a></td></tr>
+		<tr><td><a href="reporteproducto">REPORTE PRODUCTO</a></td></tr>
+		<tr><td><a href="reportetipodeproductos">REPORTE TIPO DE PRODUCTO</a></td></tr>
+		<tr><td><a href="reporteusuario">REPORTE USUARIO</a></td></tr>
+	</table>
+
+
+
+
+
 	<h1 align="center">Registrar Clientes</h1>
 	<form action ="{{route('guardacliente')}}" method = 'POST' align="center">
 		{{csrf_field()}}

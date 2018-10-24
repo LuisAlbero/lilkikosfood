@@ -34,6 +34,25 @@ class controlador_empleados extends Controller
 	$estado = $request->estado;
 	$cp = $request->cp;
 
+$this->validate($request,[
+	     'id_empleado'=>'required|numeric',
+         'nombre'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
+          'apellido1'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
+         'apellido2'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
+            'puesto'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
+
+           'telefono'=>['required','numeric'],
+           'email'=>['required','email'],
+            'rfc'=>['required'],
+            'calle'=>['required'],
+               'numero'=>['required','numeric'],
+              'colonia'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
+			'cp'=>['regex:/^[0-9]{5}$/'],
+             'estado'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/']
+
+
+
+	     ]);
 	//Se mandan los datos a la base de datos
 	 $this->validate($request,[
 	     ]);
@@ -50,6 +69,8 @@ class controlador_empleados extends Controller
 			$TipAb->calle = $request->calle;
 			$TipAb->numero = $request->numero;
 			$TipAb->colonia = $request->colonia;
+		$TipAb->estado = $request->estado;
+
 			$TipAb->cp = $request->cp;
 
 			$TipAb->save();
@@ -75,6 +96,25 @@ class controlador_empleados extends Controller
 		$nombre = $request->nombre;
 		$id_empleado = $request->id_empleado;
 
+$this->validate($request,[
+	     'id_empleado'=>'required|numeric',
+         'nombre'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
+          'apellido1'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
+         'apellido2'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
+            'puesto'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
+
+           'telefono'=>['required','numeric'],
+           'email'=>['required','email'],
+            'rfc'=>['required'],
+            'calle'=>['required'],
+               'numero'=>['required','numeric'],
+              'colonia'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
+			'cp'=>['regex:/^[0-9]{5}$/'],
+             'estado'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/']
+
+
+
+	     ]);
 		$this->validate($request,[
 	 
 	     ]);
@@ -90,6 +130,8 @@ class controlador_empleados extends Controller
 			$TA->calle = $request->calle;
 			$TA->numero = $request->numero;
 			$TA->colonia = $request->colonia;
+						$TA->estado = $request->estado;
+
 			$TA->cp = $request->cp;
 			$TA->save();
 			$proceso = "MODIFICACION DE TIPO DE ABOGADO";

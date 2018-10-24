@@ -1,34 +1,23 @@
 @extends('sistema.principal')
 
 @section('contenido')
-<h1>REPORTE DE MAESTROS</h1>
-<table border= 1>
-<tr><td>Clave</td><td>Nombre</td><td>Correo</td><td>Edad</td>
-<td>Operaciones</td></tr>
-@foreach($ma as $m)
-<tr><td>{{$m->idm}}</td><td>{{$m->nombre}}</td>
-<td>{{$m->correo}}</td><td>{{$m->edad}}</td>
-<td>
-<a href="{{URL::action('ejercicios@borramaestro',['idm'=>$m->idm])}}">
-Eliminar</a> 
-<a href="{{URL::action('ejercicios@modificamaestro',['idm'=>$m->idm])}}">
-Modificar</a>
-</td>
-
-<a href = "eliminamaestro.php?idm=$idm">Eliminar </a>
-</tr>
+<h1>Reporte de maestros </h1>
+<br>
+<table border =1>
+<tr><td>Clave</td><td>Foto</td><td>Nombre</td><td>Edad</td>
+<td>Correo</td><td>Operaciones</td></tr>
+@foreach($maestros as $ma)
+<tr><td>{{$ma->idm}}</td><td>
+<img src = "{{asset('archivos/' ,$ma->archivo)}}"
+height =50 width=50></td>
+<td>{{$ma->nombre}}</td><td>{{$ma->edad}}</td>
+<td>{{$ma->correo}}</td><td>
+<a href="{{URL::action('curso@eliminam',['idm'=>$ma->idm])}}">
+Eliminar
+</a>
+<a href="{{URL::action('curso@modificam',['idm'=>$ma->idm])}}">
+ Modificar
+ </a></td></tr>
 @endforeach
 </table>
-{{$ma->render()}}
 @stop
-
-
-
-
-
-
-
-
-
-
-
