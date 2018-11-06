@@ -46,13 +46,18 @@ class c_usuarios extends Controller
 		$tipo_de_usuario = $request->tipo_de_usuario;
 		$id_empleado = $request->id_empleado;
 		//no se recibe el archivo
-	$this->validate($request,[
-			'id_usuario'=>'required|numeric',
-			'login'=>'required|alpha',
-			'password'=>'required|alpha_num',
-			'tipo_de_usuario'=>'required|alpha',
-	
-		]);
+	 $this->validate($request,[
+	     'id_usuario'=>'required|numeric',
+	               'login'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
+
+          'password'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
+         
+                   'tipo_de_usuario'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
+
+           
+
+
+	     ]);
 		
 
 

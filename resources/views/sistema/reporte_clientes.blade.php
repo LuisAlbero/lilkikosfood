@@ -15,7 +15,7 @@
 
 
 
-			<td><a href="#">Eliminar </a>
+			<td><a href="{{URL::action('controlador_clientes@eliminacliente', ['id_cliente'=>$ab->id_cliente])}}">Eliminar</a>
 				<a href="{{URL::action('controlador_clientes@modificacliente',['id_cliente'=>$ab->id_cliente])}}">Modificar</a>
 			</td></tr>
 		@endforeach

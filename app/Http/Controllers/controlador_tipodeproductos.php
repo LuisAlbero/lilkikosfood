@@ -22,7 +22,14 @@ class controlador_tipodeproductos extends Controller
 	{   
 	$id_tipodeproducto = $request->id_tipodeproducto;
 	$nombre = $request->nombre;
+ $this->validate($request,[
+	     'id_producto'=>'required|numeric',
+	               'nombre'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
 
+         
+
+
+	     ]);
 
 	//Se mandan los datos a la base de datos
 	 $this->validate($request,[

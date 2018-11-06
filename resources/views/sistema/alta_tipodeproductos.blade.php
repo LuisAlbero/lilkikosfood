@@ -1,36 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Registra Clientes</title>
-</head>
-<body>
-	<h1 align="center">Registrar empleado</h1>
-	<form action ="{{route('guardatipodeproducto')}}" method = 'POST' align="center">
+@extends('sistema.principal')
+
+  @section('contenido')
+
+	<form class="formulariodo" action ="{{route('guardatipodeproducto')}}" method = 'POST' align="center">
 		{{csrf_field()}}
+		<div class="contenedor">
+		<h2 class="title"> REGISTRO TIPO DE PRODUCTOS</h2>
 
 		@if($errors->first('id_tipodeproducto'))
 		<i> {{ $errors->first('id_tipodeproducto') }} </i> 
-		@endif	<br>
+		@endif	
 
-		Clave: <input type = 'text' name = 'id_tipodeproducto' value="{{$idTipAbs}}" readonly = 'readonly'>
-		<br><br>
+		<p class="sub">Clave:</p> <input class="input48" type = 'text' name = 'id_tipodeproducto' value="{{$idTipAbs}}" readonly = 'readonly'>
+	
 
 
 
 		@if($errors->first('nombre')) 
 		<i> {{ $errors->first('nombre') }} </i> 
-		@endif	<br>
-		Tipo de producto: <input type = 'text' name = 'nombre' value="{{old('nombre')}}">
+		@endif	
+		<p class="sub">Tipo de producto: </p> <input class="input48" type = 'text' name = 'nombre' value="{{old('nombre')}}">
 		<br>
 		<br>
 
 
 
 
-
-		<input type = 'submit' value = 'Guardar'>
-		<input type = 'reset' value = 'Cancelar'>
+	<input class="btn btn-primary" type = 'submit' value = 'Guardar'>
+		<input class="btn btn-primary" type = 'reset' value = 'Cancelar'>
 	</form>
-</body>
-</html>
+	</div>
+@stop

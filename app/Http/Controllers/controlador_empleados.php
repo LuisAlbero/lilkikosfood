@@ -34,20 +34,25 @@ class controlador_empleados extends Controller
 	$estado = $request->estado;
 	$cp = $request->cp;
 
-$this->validate($request,[
-	     'id_empleado'=>'required|numeric',
-         'nombre'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
+	 $this->validate($request,[
+	     'id_cliente'=>'required|numeric',
+	               'nombre'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
+
           'apellido1'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
          'apellido2'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
-            'puesto'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
+         'rfc'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
+                     'c_p'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
+         'puesto'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
 
-           'telefono'=>['required','numeric'],
+
+           'telefono'=>'required|numeric',
            'email'=>['required','email'],
-            'rfc'=>['required'],
-            'calle'=>['required'],
+                     'calle'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
+
+           'cp'=>'required|numeric',
+
                'numero'=>['required','numeric'],
-              'colonia'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
-			'cp'=>['regex:/^[0-9]{5}$/'],
+              'colonia'=>'required|regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/',
              'estado'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/']
 
 
@@ -85,6 +90,16 @@ $this->validate($request,[
 		return view('sistema.reporte_empleados')
 		->with('TipAb',$TipAb);
 	}
+
+public function eliminaempleado($id_empleado){
+			empleados::find($id_empleado)->delete();
+			$proceso = "Eliminar empleado";
+			$mensaje = "El empleado ha sido borrado correctamente";
+			return view('sistema.mensaje')
+			->with('proceso',$proceso)
+			->with('mensaje',$mensaje);
+		}
+
 	public function modificaempleado($id_empleado){
 		//echo "Tipo Abogado a modificar $id_cliente";
 		$infom = empleados::where('id_empleado','=',$id_empleado)->get();
@@ -96,25 +111,7 @@ $this->validate($request,[
 		$nombre = $request->nombre;
 		$id_empleado = $request->id_empleado;
 
-$this->validate($request,[
-	     'id_empleado'=>'required|numeric',
-         'nombre'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
-          'apellido1'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
-         'apellido2'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
-            'puesto'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
 
-           'telefono'=>['required','numeric'],
-           'email'=>['required','email'],
-            'rfc'=>['required'],
-            'calle'=>['required'],
-               'numero'=>['required','numeric'],
-              'colonia'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
-			'cp'=>['regex:/^[0-9]{5}$/'],
-             'estado'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/']
-
-
-
-	     ]);
 		$this->validate($request,[
 	 
 	     ]);

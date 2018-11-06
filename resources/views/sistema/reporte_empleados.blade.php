@@ -25,7 +25,8 @@
                        <td>{{$ab->estado}}</td>
                         <td>{{$ab->cp}}</td>
                          
-			<td><a href="#">Eliminar </a>
+		<td><a href="{{URL::action('controlador_empleados@eliminaempleado', ['id_empleado'=>$ab->id_empleado])}}">Eliminar</a>
+
 				<a href="{{URL::action('controlador_empleados@modificaempleado',['id_empleado'=>$ab->id_empleado])}}">Modificar</a>
 			</td></tr>
 		@endforeach

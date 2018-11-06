@@ -9,6 +9,12 @@ use App\clientes;
 
 class controlador_clientes extends Controller
 {
+	public function principal()
+	 {
+		 return view('sistema.principal');
+		
+	 }
+
      public function altacliente(){
     	$clavequesigue = clientes::orderBy('id_cliente','desc')
     								->take(1)
@@ -36,16 +42,21 @@ class controlador_clientes extends Controller
 
 	 $this->validate($request,[
 	     'id_cliente'=>'required|numeric',
-         'nombre'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
+	               'nombre'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
+
           'apellido1'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
          'apellido2'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
-           'telefono'=>['required','numeric'],
+            'rfc'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
+           'c_p'=>'required|numeric',
+
+
+           'telefono'=>'required|numeric',
            'email'=>['required','email'],
-            'rfc'=>['required'],
-            'calle'=>['required'],
+                     'calle'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
+
+
                'numero'=>['required','numeric'],
-              'colonia'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
-			'c_p'=>['regex:/^[0-9]{5}$/'],
+              'colonia'=>'required|regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/',
              'estado'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/']
 
 
@@ -72,7 +83,6 @@ class controlador_clientes extends Controller
 			$TipAb->estado = $request->estado;
 
 			$TipAb->save();
-			$proceso = "Registro de Cliente";
 			//$mensaje = "Cliente registrado correctamente";
 			//return view ("sistema.mensaje")
 			//->with('proceso',$proceso)
@@ -83,6 +93,15 @@ class controlador_clientes extends Controller
 		return view('sistema.reporte_clientes')
 		->with('TipAb',$TipAb);
 	}
+
+	public function eliminacliente($id_cliente){
+			clientes::find($id_cliente)->delete();
+			$proceso = "Eliminar Cliente";
+			$mensaje = "El cliente ha sido borrado correctamente";
+			return view('sistema.mensaje')
+			->with('proceso',$proceso)
+			->with('mensaje',$mensaje);
+		}
 	public function modificacliente($id_cliente){
 		//echo "Tipo Abogado a modificar $id_cliente";
 		$infom = clientes::where('id_cliente','=',$id_cliente)->get();

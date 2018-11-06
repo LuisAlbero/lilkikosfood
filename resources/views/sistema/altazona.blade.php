@@ -1,55 +1,54 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Registra Mesa</title>
-</head>
-<body style="text-align: center;">
-  <h1 align="center">Registrar Zona</h1>
-  
+@extends('sistema.principal')
 
-<form action ="{{route('guardazona')}}" method = 'POST'  aling="center">
+  @section('contenido')
+
+
+  <div class="mon">
+<form  class="formulario" action ="{{route('guardazona')}}" method = 'POST'  aling="center">
+
+
+		<div class="contenedor">
+		<h2 class="title"> REGISTRO ZONA</h2>
 {{csrf_field()}}
-
-Clave <input type = 'text' name = 'id_zona' value="{{$idms}}" readonly = 'readonly'>
-<br>
-
 
 
 @if($errors->first('id_zona'))
 <i> {{ $errors->first('id_zona') }} </i>
 @endif <br>
+<p class="sub">Clave:</p> <input align="center"  class="input48" type = 'text' name = 'id_zona' value="{{$idms}}" readonly = 'readonly'>
+
 
 	@if($errors->first('zona')) 
 		<i> {{ $errors->first('zona') }} </i> 
-		@endif	<br>
-		Zona: <input type = 'text' name = 'zona' value="{{old('zona')}}">
-		<br>
-		<br>
-			@if($errors->first('descripcion')) 
+		@endif
+
+			<p class="sub">Zona: </p><input  class="input48" type = 'text' name = 'zona' value="{{old('zona')}}">
+	
+	@if($errors->first('descripcion')) 
 		<i> {{ $errors->first('descripcion') }} </i> 
-		@endif	<br>
-		Descripcion: <input type = 'text' name = 'descripcion' value="{{old('descripcion')}}">
+		@endif	
+
+		<p class="sub">Descripcion:</p> <input  class="input48" type = 'text' name = 'descripcion' value="{{old('descripcion')}}">
 		<br>
 		<br>
 
 			@if($errors->first('activo')) 
 		<i> {{ $errors->first('activo') }} </i> 
-		@endif	<br>
-<label for="terms">Activo</label><br>
-Activo<input type="checkbox" name="activo" id="activo" value="Si" >SI		
-<input type="checkbox" name="activo" id=activo" value="No" >NO		<br>
+		@endif	
+	</div>
+<label for="terms"><p ">Activo</p>SI<input   type="checkbox" name="activo" id="activo" value="Si" >		
+NO<input   type="checkbox" name="activo" id=activo" value="No" ></label>
+	
 
 		<br>
-
-
-
-
-<br>
 <br>
 
-<input type = 'submit' value = 'Guardar'>
-  </form>
-</body>
-</html>
+
+
+		<input class="btn btn-primary" type = 'submit' value = 'Guardar'>
+		<input class="btn btn-primary" type = 'reset' value = 'Cancelar'>
+	</form>
+	</div>
+</form></div>
+@stop
