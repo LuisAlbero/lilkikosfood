@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Reporte de Tipos de Abogados</title>
+
+	<title>Reporte de Empleados</title>
 </head>
 <body>
 	<h1 align="center">REPORTE EMPLEADOS</h1>
 	<table border="1" align="center">
-		<tr><td>Clave</td><td>Nombre</td><td>Apellido P</td><td>Apellido M</td><td>Puesto </td><td>Telefono </td><td>Email </td><td>RFC P</td><td>Calle </td><td>Numero </td><td>Colonia </td><td>Estado</td><td>CP</td><td>Accion</td>	
+		<tr><td>Clave</td><td>Nombre</td><td>Apellido P</td><td>Apellido M</td><td>Puesto </td><td>Telefono </td><td>Email </td><td>RFC </td><td>Calle </td><td>Numero </td><td>Colonia </td><td>Estado</td><td>CP</td><td>Accion</td>	
 		</tr>
 		@foreach($TipAb as $ab)
 
@@ -31,5 +28,3 @@
 			</td></tr>
 		@endforeach
 	</table>
-</body>
-</html>

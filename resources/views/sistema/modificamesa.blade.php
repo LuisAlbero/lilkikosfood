@@ -10,18 +10,30 @@ Clave <input type = 'text' name = 'id_mesa' value="{{$mesas->id_mesa}}" readonly
 <br>
 
 
-@if($errors->first('idm'))
-<i> {{ $errors->first('idm') }} </i>
+@if($errors->first('id_mesa'))
+<i> {{ $errors->first('id_mesa') }} </i>
 @endif <br>
 
 
+
+
+@if($errors->first('numero_de_personas')) 
+		<i> {{ $errors->first('numero_de_personas') }} </i> 
+		@endif	<br>
+		<p class="sub">Numero de personas</p> <input class="input48" type = 'text' name = 'numero_de_personas' value="{{old('numero_de_personas')}}">
+
+<br>
+<br>
 Seleccione zona<select name = 'id_zona'>
         <option value = '{{$id_zona}}'>{{$zonas}}</option>
         @foreach($todasdemas as$td)
+
+
+
         <option value = '{{$td->id_zona}}'>{{$td->zona}}</option>
         @endforeach
       </select>
-<br>
+<br><br>
 
 
 <input type = 'submit' value = 'Guardar'>

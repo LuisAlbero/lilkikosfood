@@ -49,22 +49,22 @@
 
 				</div>
 
-				Selecciona tu nombre de empleado<select name="id_tipo_producto">
+				Selecciona el tipo de producto<select name="id_tipo_producto">
 				@foreach($tipo_de_productos as $cr)
 				<option value= '{{$cr->id_tipo_producto}}'> {{$cr->nombre}} 
 				</option>	
 				@endforeach
 				</select>
 				<br>
-
-			<!--	@if($errors->first('archivo'))
+<!--
+				@if($errors->first('archivo'))
 		        <i> {{ $errors->first('archivo') }} </i>
 		        @endif <br>
 		        
 
 				Selecciona foto: <input type="file" name= "archivo"><br>
-				-->
-				<br>
+				
+				<br>-->
 
 				<!--<input type="submit" value="Guardar">
 				<input type="submit" value="Cancelar">-->

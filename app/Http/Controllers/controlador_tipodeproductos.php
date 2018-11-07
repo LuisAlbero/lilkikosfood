@@ -22,18 +22,16 @@ class controlador_tipodeproductos extends Controller
 	{   
 	$id_tipodeproducto = $request->id_tipodeproducto;
 	$nombre = $request->nombre;
- $this->validate($request,[
+
+/* $this->validate($request,[
 	     'id_producto'=>'required|numeric',
-	               'nombre'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
+	      'nombre'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
 
-         
-
-
-	     ]);
+        
+	     ]);*/
 
 	//Se mandan los datos a la base de datos
-	 $this->validate($request,[
-	     ]);
+	
 		 //insert into tipo_abogados (id_cliente,TipoAbogado)-------
 	        $TipAb = new tipodeproductos;
 			$TipAb->id_tipodeproducto = $request->id_tipodeproducto;
@@ -63,6 +61,10 @@ class controlador_tipodeproductos extends Controller
 		$nombre = $request->nombre;
 		$id_tipodeproducto = $request->id_tipodeproducto;
 
+
+
+
+
 		$this->validate($request,[
 	 
 	     ]);
@@ -77,4 +79,16 @@ class controlador_tipodeproductos extends Controller
 			//->with('proceso',$proceso)
 			//->with('mensaje',$mensaje);
 }
+
+
+public function eliminatipodeproducto($id_tipodeproducto){
+		tipodeproductos::find($id_tipodeproducto)->delete();
+		$proceso = "Eliminar Tipo de Producto";
+		$mensaje = "El Tipo de Producto ha sido borrado correctamente";
+		return view('sistema.mensaje')
+		->with('proceso',$proceso)
+		->with('mensaje',$mensaje);
+	}
+
+
 }

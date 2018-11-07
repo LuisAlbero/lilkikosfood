@@ -14,6 +14,16 @@
 
 
 
+
+
+		@if($errors->first('numero_de_personas')) 
+		<i> {{ $errors->first('numero_de_personas') }} </i> 
+		@endif	<br><br>
+		<p class="sub">Numero de personas:</p> <input class="input48" type = 'text' name = 'numero_de_personas' value="{{old('numero_de_personas')}}">
+		
+
+
+
 @if($errors->first('id_mesa'))
 <i> {{ $errors->first('id_mesa') }} </i>
 @endif <br>

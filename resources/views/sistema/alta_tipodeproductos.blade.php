@@ -19,7 +19,7 @@
 		@if($errors->first('nombre')) 
 		<i> {{ $errors->first('nombre') }} </i> 
 		@endif	
-		<p class="sub">Tipo de producto: </p> <input class="input48" type = 'text' name = 'nombre' value="{{old('nombre')}}">
+		<p class="sub">Nombre: </p> <input class="input48" type = 'text' name = 'nombre' value="{{old('nombre')}}">
 		<br>
 		<br>
 

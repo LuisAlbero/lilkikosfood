@@ -18,15 +18,16 @@ Route::get('/altaempleado','controlador_empleados@altaempleado')->name('altaempl
 Route::POST('/guardaempleado','controlador_empleados@guardaempleado')->name('guardaempleado');
 Route::get('/reporteempleado','controlador_empleados@reporteempleado');
 route::get('/eliminaempleado/{id_empleado}','controlador_empleados@eliminaempleado')->name('eliminaempleado');
-
 Route::get('/modificaempleado/{id_empleado}','controlador_empleados@modificaempleado')->name('modificaempleado');
 Route::POST('/guardaedicionempleado','controlador_empleados@guardaedicionempleado')->name('guardaedicionempleado');
+
 
 Route::get('/altatipodeproductos','controlador_tipodeproductos@altatipodeproductos')->name('altatipodeproductos');;
 Route::POST('/guardatipodeproducto','controlador_tipodeproductos@guardatipodeproducto')->name('guardatipodeproducto');
 Route::get('/reportetipodeproductos','controlador_tipodeproductos@reportetipodeproductos');
 Route::get('/modificatipodeproducto/{id_tipodeproducto}','controlador_tipodeproductos@modificatipodeproducto')->name('modificatipodeproducto');
 Route::POST('/guardaediciontipodeproducto','controlador_tipodeproductos@guardaediciontipodeproducto')->name('guardaediciontipodeproducto');
+route::get('/eliminatipodeproducto/{id_tipodeproducto}','controlador_tipodeproductos@eliminatipodeproducto')->name('eliminatipodeproducto');
 
 
 
@@ -35,27 +36,26 @@ Route::POST('/guardacliente','controlador_clientes@guardacliente')->name('guarda
 Route::get('/reporteclientes','controlador_clientes@reportecliente');
 Route::get('/modificacliente/{id_cliente}','controlador_clientes@modificacliente')->name('modificacliente');
 route::get('/eliminacliente/{id_cliente}','controlador_clientes@eliminacliente')->name('eliminacliente');
-
 Route::POST('/guardaedicioncliente','controlador_clientes@guardaedicioncliente')->name('guardaedicioncliente');
 Route::POST('/guardaedicioncliente','controlador_clientes@guardaedicioncliente')->name('guardaedicioncliente');
 
 
 
 
-Route::get('/altamesa','curso@altamesa');
-Route::POST('/guardamesa','curso@guardamesa')->name('guardamesa');
-Route::get('/reportemesa','curso@reportemesa');
-Route::get('/eliminam/{idm}','curso@eliminam')->name('eliminam');
-Route::get('/modificam/{idm}','curso@modificam')->name('modificam');
-Route::POST('/guardaedicionm','curso@guardaedicionm')->name('guardaedicionm');
+Route::get('/altamesa','c_mesas@altamesa');
+Route::POST('/guardamesa','c_mesas@guardamesa')->name('guardamesa');
+Route::get('/reportemesa','c_mesas@reportemesa');
+Route::get('/eliminamesa/{id_mesa}','c_mesas@eliminamesa')->name('eliminamesa');
+Route::get('/modificam/{idm}','c_mesas@modificam')->name('modificam');
+Route::POST('/guardaedicionm','c_mesas@guardaedicionm')->name('guardaedicionm');
 
 
 Route::get('/altazona','zona@altazona');
 Route::POST('/guardazona','zona@guardazona')->name('guardazona');
 Route::get('/reportezona','zona@reportezona');
-Route::get('/eliminam/{id_zona}','curso@eliminam')->name('eliminam');
-Route::get('/modificazona/{id_zona}','curso@modificam')->name('modificam');
-Route::POST('/guardaedicionzona','curso@guardaedicionm')->name('guardaedicionm');
+Route::get('/eliminazona/{id_zona}','zona@eliminazona')->name('eliminazona');
+Route::get('/modificazona/{id_zona}','zona@modificazona')->name('modificazona');
+Route::POST('/guardaedicionzona','zona@guardaedicionzona')->name('guardaedicionm');
 
 
 
@@ -73,6 +73,7 @@ route::get('/reporteproductos','c_productos@reporteproductos');
 route::get('/eliminaproductos/{id_producto}','c_productos@eliminaproductos')->name('eliminaproductos');
 route::get('/modificaproductos/{id_producto}','c_productos@modificaproductos')->name('modificaproductos');
 Route::POST('/guardaedicionusuario','c_usuarios@guardaedicionusuario')->name('guardaedicionusuario');
+
 
 	   Route::get('/principal','controlador_clientes@principal');
 	   Route::get('/principal','controlador_tipodeproductos@principal');

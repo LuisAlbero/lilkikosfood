@@ -24,6 +24,8 @@ class controlador_clientes extends Controller
     	return view ('sistema.alta_clientes')
 		     		->with('idTipAbs',$idTipAbs);
     }
+
+
     public function guardacliente(Request $request)
 	{   
 	$id_cliente = $request->id_cliente;
@@ -39,29 +41,24 @@ class controlador_clientes extends Controller
 	$c_p = $request->c_p;
 	$estado = $request->estado;
 
+	/*$this->validate($request,[
 
-	 $this->validate($request,[
-	     'id_cliente'=>'required|numeric',
-	               'nombre'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
+			'nombre'=>'required|regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/',
+			'apellido1' => 'required|alpha|max:255',
+			'apellido2' => 'required|alpha|max:255',
+			'puesto' => 'required|alpha|max:255',
+			'telefono'=>'required|regex:/^[0-9]{10}$/',
+			'email' => 'required|email|max:255',
+			'rfc'=>'required|regex:/^[0-9,A-Z]{13}$/',
+			'calle' => 'required|max:255',
+			'numero' => 'required|numeric|max:2000',
+			'colonia'=>'required|regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/',
+			'cp'=>'required|regex:/^[0-9]{5}$/',
 
-          'apellido1'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
-         'apellido2'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
-            'rfc'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
-           'c_p'=>'required|numeric',
+			'estado'=>'required|regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/',
 
-
-           'telefono'=>'required|numeric',
-           'email'=>['required','email'],
-                     'calle'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
-
-
-               'numero'=>['required','numeric'],
-              'colonia'=>'required|regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/',
-             'estado'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/']
-
-
-
-	     ]);
+		]);
+*/
 
 
 	//Se mandan los datos a la base de datos
@@ -83,6 +80,8 @@ class controlador_clientes extends Controller
 			$TipAb->estado = $request->estado;
 
 			$TipAb->save();
+			$proceso = "Registro de Clientes";
+
 			//$mensaje = "Cliente registrado correctamente";
 			//return view ("sistema.mensaje")
 			//->with('proceso',$proceso)
@@ -132,7 +131,7 @@ class controlador_clientes extends Controller
 
 
 			$TA->save();
-			$proceso = "MODIFICACION DE TIPO DE ABOGADO";
+			$proceso = "Registro de Clientes";
 			//$mensaje = "Tipo de Abogado modificado correctamente";
 			//return view ("sistema.mensaje")
 			//->with('proceso',$proceso)

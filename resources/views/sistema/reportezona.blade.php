@@ -19,8 +19,8 @@
 
               
                          
-			<td><a href="#">Eliminar </a>
-				<a href="{{URL::action('curso@modificam',['id_mesa'=>$ab->id_mesa])}}">Modificar</a>
+		<td><a href="{{URL::action('zona@eliminazona', ['id_zona'=>$ab->id_zona])}}">Eliminar</a>
+				<a href="{{URL::action('zona@modificazona',['id_zona'=>$ab->id_zona])}}">Modificar</a>
 			</td></tr>
 		@endforeach
 	</table>

@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\zonas;
 use App\mesas;
 
-class curso extends Controller
+class c_mesas extends Controller
 {
  
     public function altamesa()
@@ -28,21 +28,19 @@ class curso extends Controller
     }
     public function guardamesa(Request $request)
     {
-        $nombre = $request->nombre;
-        $edad = $request->edad;
-        $correo = $request->correo;
-        $idm = $request->idm;
-        $cp = $request->cp;
+        $numero_de_personas = $request->nombre;
+        $id_zona = $request->edad;
         //no se recibe el archivo
 
        
         $maest = new mesas;
         $maest ->id_mesa = $request ->id_mesa;
-  
+        $maest ->numero_de_personas = $request ->numero_de_personas;
+
         $maest ->id_zona = $request ->id_zona;
         $maest->save();
-        $proceso = "ALTA DE MAESTRO";
-        $mensaje = "Maestro guardado correctamente";
+        $proceso = "ALTA DE MESA";
+        $mensaje = "Mesa guardado correctamente";
         return view ("sistema.mensaje")
         ->with('proceso',$proceso)
         ->with('mensaje',$mensaje);
@@ -59,8 +57,8 @@ class curso extends Controller
     public function eliminamesa($id_mesa)
     {
         mesas::find($id_mesa)->delete();
-        $proceso = "ELIMNAR MAESTROS";
-        $mensaje = "El maestro a sido borrado correctamente";
+        $proceso = "ELIMINA MESA";
+        $mensaje = "La mesa haa sido borrada correctamente";
         return view ('sistema.mensaje')
         ->with('proceso', $proceso)
         ->with('mensaje', $mensaje);

@@ -67,7 +67,46 @@ class zona extends Controller
         return view('sistema.reportezona')
         ->with('zonas', $zonas);
     }
+public function eliminazona($id_zona){
+        zonas::find($id_zona)->delete();
+        $proceso = "Eliminar Zona";
+        $mensaje = "LA zona ha sido borrado correctamente";
+        return view('sistema.mensaje')
+        ->with('proceso',$proceso)
+        ->with('mensaje',$mensaje);
+    }
 
+
+        public function modificazona($id_zona){
+        //echo "Tipo Abogado a modificar $id_cliente";
+        $infom = zonas::where('id_zona','=',$id_zona)->get();
+        return view('sistema.modificazona')
+        ->with('infom',$infom[0]);
+    }
+    public function guardaedicionzona(Request $request){
+        //echo $request->nombre;
+        $zona = $request->zona;
+        $id_zona = $request->id_zona;
+
+
+
+        $this->validate($request,[
+            
+        ]);
+        $TA = zonas::find($id_zona);
+        $TA->id_zona = $request->id_zona;
+        $TA->zona = $request->zona;
+        $TA->descripcion = $request->descripcion;
+        $TA->apellido2 = $request->apellido2;
+        $TA->activo = $request->activo;
+       
+        $TA->save();
+        $proceso = "MODIFICACION DE ZONA";
+            //$mensaje = "Tipo de Abogado modificado correctamente";
+            //return view ("sistema.mensaje")
+            //->with('proceso',$proceso)
+            //->with('mensaje',$mensaje);
+    }
     
     
 }

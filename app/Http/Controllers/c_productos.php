@@ -45,21 +45,32 @@ class c_productos extends Controller
 		$descripcion = $request->descripcion;
 		$precio = $request->precio;
 		$id_tipo_producto = $request->id_tipo_producto;
- 
-
- $this->validate($request,[
-	     'id_producto'=>'required|numeric',
-	               'nombre'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
-
-          'descripcion'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
-         
-
-           'precio'=>'required|numeric',
-           
 
 
-	     ]);
 
+
+$this->validate($request,[
+			'nombre'=>'required|regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/',
+			'descripcion'=>'required|regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/',
+			'precio' => 'required|numeric|max:2000',
+	
+
+		]);
+
+		$file = $request->file('archivo');
+			if ($file!="")
+			{
+			
+			$ldate = date('Ymd_His_');
+			$img = $file->getClientOriginalName();
+			$img2 = $ldate.$img;
+			\Storage::disk('local')->put($img2, \File::get($file));
+			}
+			else
+			{
+				$img2 = 'sinfoto.png';
+			}
+		
 
 
 		$maest = new productos;
@@ -68,6 +79,7 @@ class c_productos extends Controller
 		$maest->descripcion = $request->descripcion;
 		$maest->precio = $request->precio;
 		$maest->id_tipo_producto = $request->id_tipo_producto;
+		$maest->archivo = $img2;
 
 		$maest->save();
 		$proceso = "ALTA PRODUCTO";
@@ -111,14 +123,7 @@ public function guardaedicionusuario(Request $request){
 		$id_empleado = $request->id_empleado;
 
 
-	 $this->validate($request,[
-	     'id_cliente'=>'required|numeric',
-         'login'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
-          'password'=>['required','regex:/^[A-Z-\s]+([a-zA-Z-áéíóúñÑ\s])+$/'],
-          
 
-
-	     ]);
 	
 		
 			$TA = usuarios::find($id_usuario);

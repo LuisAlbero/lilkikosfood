@@ -15,7 +15,8 @@
              <td>{{$ab->nombre}}</td>
               
                          
-			<td><a href="#">Eliminar </a>
+			<td>
+				<a href="{{URL::action('controlador_tipodeproductos@eliminatipodeproducto',['id_tipodeproducto'=>$ab->id_tipodeproducto])}}">Eliminar</a>
 				<a href="{{URL::action('controlador_tipodeproductos@modificatipodeproducto',['id_tipodeproducto'=>$ab->id_tipodeproducto])}}">Modificar</a>
 			</td></tr>
 		@endforeach

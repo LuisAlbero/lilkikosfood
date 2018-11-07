@@ -19,7 +19,7 @@
 		<i> {{ $errors->first('nombre') }} </i> 
 		@endif	<br>
 
-		Tipo de producto: <input type = 'text' name = 'nombre' value="{{$infom->nombre}}">
+		Nombre: <input type = 'text' name = 'nombre' value="{{$infom->nombre}}">
 		<br>
 		<br>
 

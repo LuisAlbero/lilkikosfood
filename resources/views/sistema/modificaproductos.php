@@ -60,7 +60,7 @@
 		        @endif <br>
 		        
 
-				<Selecciona foto: <input type="file" name= "archivo"><br>
+				Selecciona foto: <input type="file" name= "archivo"><br>
 				
 				<br>
 <br>
