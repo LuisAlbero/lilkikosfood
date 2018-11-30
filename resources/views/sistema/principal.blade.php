@@ -75,6 +75,9 @@
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
+@if (Session::get('sesiontipo')=='1')
+    
+          
           <ul class="treeview-menu">
             <li><a href="altacliente"><i class="fa fa-circle-o"></i>  Cliente</a></li>
             <li><a href="altaempleado"><i class="fa fa-circle-o"></i>  Empleado</a></li>
@@ -84,6 +87,9 @@
             <li><a href="altatipodeproductos"><i class="fa fa-circle-o"></i>Tipo de Producto </a>
             </li><li><a href="altausuarios"><i class="fa fa-circle-o"></i>Usuario </a></li>
           </ul>
+
+@endif
+
         </li>
  <li class="treeview">
           <a href="#">
@@ -93,10 +99,11 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="pages/forms/general.html"><i class="fa fa-circle-o"></i>  Cliente</a></li>
-            <li><a href="pages/forms/advanced.html"><i class="fa fa-circle-o"></i>  Empleado</a></li>
-            <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i>Mesa </a></li>
-            <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i>Zona </a></li><li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i>Producto </a></li><li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i>Tipo de Producto </a></li><li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i>Usuario </a></li>
+            <li><a href="reporteclientes"><i class="fa fa-circle-o"></i>  Cliente</a></li>
+            <li><a href="reporteempleado"><i class="fa fa-circle-o"></i>  Empleado</a></li>
+            <li><a href="reportemesa"><i class="fa fa-circle-o"></i>Mesa </a></li>
+            <li><a href="reportezona"><i class="fa fa-circle-o"></i>Zona </a></li><li>
+              <a href="reporteproductos"><i class="fa fa-circle-o"></i>Producto </a></li><li><a href="reportetipodeproductos"><i class="fa fa-circle-o"></i>Tipo de Producto </a></li><li><a href="reporteusuarios"><i class="fa fa-circle-o"></i>Usuario </a></li>
           </ul>
         </li>
  
@@ -105,7 +112,7 @@
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper" style="background-color: #FB693A;">
+  <div class="content-wrapper" style="background-color: #FFC300;">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1 style="color: white;">
@@ -144,6 +151,9 @@
 </script>
 <!-- Bootstrap 3.3.7 -->
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<script src="js/contra.js"></script>
+
 <!-- Morris.js charts -->
 <script src="bower_components/raphael/raphael.min.js"></script>
 <script src="bower_components/morris.js/morris.min.js"></script>
