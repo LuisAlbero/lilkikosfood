@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Reporte Zona</title>
-</head>
-<body>
-	<h1 align="center">REPORTE ZONAS</h1>
+@extends('sistema.principal')
+
+  @section('contenido')
+		<h2 class="titlea"> REPORTE ZONA</h2>
 	<table border="1" align="center">
+		<thead>
 		<tr><td>Clave</td><td>Zona</td><td>Descripcion</td><td>Activo</td><td>Descripciòn</td>			
-		</tr>
+		</tr></thead>
 		@foreach($zonas as $ab)
 
 			<tr><td>{{$ab->id_zona}}</td>
@@ -18,11 +15,13 @@
 
 
               
-                         
-		<td><a href="{{URL::action('zona@eliminazona', ['id_zona'=>$ab->id_zona])}}">Eliminar</a>
-				<a href="{{URL::action('zona@modificazona',['id_zona'=>$ab->id_zona])}}">Modificar</a>
+           <td> <a href="{{URL::action('zona@eliminazona', ['id_zona'=>$ab->id_zona])}}"><button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-trash"></span>  
+        </button></a>
+				<a href="{{URL::action('zona@modificazona',['id_zona'=>$ab->id_zona])}}"><button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-edit"></span> Edit
+        </button></a>
 			</td></tr>
 		@endforeach
 	</table>
-</body>
-</html>
+@stop>
