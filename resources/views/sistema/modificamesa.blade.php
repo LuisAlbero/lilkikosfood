@@ -1,14 +1,19 @@
-<html>
-<body style="text-align: center;">
-	
-<h1>Modifica de Mesa</h1>
-<br>
-<form action ="{{route('guardaedicionm')}}" method = 'POST' enctype='multipart/form-data'>
+
+
+
+	@extends('sistema.principal')
+
+  @section('contenido')
+<form class="formulario" action ="{{route('guardaedicionm')}}" method = 'POST' enctype='multipart/form-data'>
 {{csrf_field()}}
 
-Clave <input type = 'text' name = 'id_mesa' value="{{$mesas->id_mesa}}" readonly = 'readonly'>
-<br>
-
+				@if($errors->first('id_mesa'))
+		        <i> {{ $errors->first('id_mesa') }} </i>
+		        @endif <br>
+		        <div class="form-group">
+		        	<label for="id_mesa">Clave:</label>
+				<input type="text" placeholder="Clave" class="form-control" name="id_mesa" value="{{$infom->id_mesa}}" readonly='readonly'><br>
+				</div>
 
 @if($errors->first('id_mesa'))
 <i> {{ $errors->first('id_mesa') }} </i>
@@ -16,27 +21,30 @@ Clave <input type = 'text' name = 'id_mesa' value="{{$mesas->id_mesa}}" readonly
 
 
 
-
 @if($errors->first('numero_de_personas')) 
 		<i> {{ $errors->first('numero_de_personas') }} </i> 
 		@endif	<br>
-		<p class="sub">Numero de personas</p> <input class="input48" type = 'text' name = 'numero_de_personas' value="{{old('numero_de_personas')}}">
+		Numero de personas: <input type = 'text' class="form-control"  name = 'numero_de_personas' value="{{$infom->numero_de_personas}}">
 
+
+
+
+
+<br>	Zona<select name="id_zona" class="form-control">
+					<option class="form-control" value='{{$id_zona}}'>{{$zonas}}</option>
+					@foreach($todas as $td)
+					<option class="form-control" value='{{$td->id_zona}}'>{{$td->zona}}</option>
+					@endforeach
+				</select>
+				<br>
 <br>
-<br>
-Seleccione zona<select name = 'id_zona'>
-        <option value = '{{$id_zona}}'>{{$zonas}}</option>
-        @foreach($todasdemas as$td)
 
 
 
-        <option value = '{{$td->id_zona}}'>{{$td->zona}}</option>
-        @endforeach
-      </select>
-<br><br>
 
 
-<input type = 'submit' value = 'Guardar'>
-</form>
-</body>
-</html>
+
+		<input class="btn btn-primary" type = 'submit' value = 'Guardar'>
+	</form>
+</div>
+@stop
